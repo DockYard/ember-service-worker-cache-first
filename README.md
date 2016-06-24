@@ -1,8 +1,6 @@
 # Ember Service Worker Cache First
 
-_An cache first Ember Service Worker plugin_
-
-This README outlines the details of collaborating on this Ember addon.
+_A cache first Ember Service Worker plugin_
 
 ## Installation
 
