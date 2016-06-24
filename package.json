@@ -11,11 +11,11 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "",
+  "repository": "https://github.com/DockYard/ember-service-worker-cache-first",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Marten Schilstra <mail@martenschilstra.nl>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
@@ -40,7 +40,8 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-service-worker-plugin"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6"
