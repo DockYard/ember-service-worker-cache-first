@@ -4,12 +4,17 @@ const CACHE_KEY_PREFIX = 'esw-cache-first-';
 const CACHE_NAME = `${CACHE_KEY_PREFIX}${PROJECT_REVISION}`;
 
 addFetchListener(function(event) {
+  if (event.request.method !== 'GET') { return Promise.resolve(undefined); }
+
   return caches.open(CACHE_NAME).then(function(cache) {
     return cache.match(event.request).then(function(response) {
-      return response || fetch(event.request).then(function(response) {
-        cache.put(event.request, response.clone());
-        return response;
-      });
+      if (response) { return response; }
+
+      return fetch(event.request)
+        .then(function(response) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
     });
   });
 });
