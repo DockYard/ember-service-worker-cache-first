@@ -3,6 +3,11 @@ import { addFetchListener, PROJECT_REVISION } from 'ember-service-worker/service
 const CACHE_KEY_PREFIX = 'esw-cache-first-';
 const CACHE_NAME = `${CACHE_KEY_PREFIX}${PROJECT_REVISION}`;
 
+function isCacheable(request) {
+  let httpRegex = /https?/;
+  return request.method === 'GET' && httpRegex.test(request.url);
+}
+
 addFetchListener(function(event) {
   if (event.request.method !== 'GET') { return Promise.resolve(undefined); }
 
@@ -12,7 +17,10 @@ addFetchListener(function(event) {
 
       return fetch(event.request)
         .then(function(response) {
-          cache.put(event.request, response.clone());
+          if (isCacheable(event.request)) {
+            cache.put(event.request, response.clone());
+          }
+
           return response;
         });
     });
