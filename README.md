@@ -2,10 +2,41 @@
 
 _A cache first Ember Service Worker plugin_
 
+## F#$& my assets aren't updating in development mode
+
+Turn on the "Update on reload" setting in the `Application > Service Workers`
+menu in the Chrome devtools.
+
 ## Installation
 
 ```
 ember install ember-service-worker-cache-first
+```
+
+## Configuration
+
+The configuration is done in the `ember-cli-build.js` file:
+
+```js
+var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
+module.exports = function(defaults) {
+  var app = new EmberApp(defaults, {
+    'esw-cache-first': {
+      // RegExp patterns specifying which URLs to cache.
+      patterns: [
+        '/api/v1/(.+)',
+        'https://cdn.example.com/assets/fonts/(.+)',
+        'https://cdn.example.com/assets/images/((?!avatars/).+)'
+      ],
+
+      // changing this version number will bust the cache
+      version: '1'
+    }
+  });
+
+  return app.toTree();
+};
 ```
 
 ## Authors
