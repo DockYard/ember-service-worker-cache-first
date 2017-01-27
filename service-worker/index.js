@@ -36,23 +36,6 @@ self.addEventListener('fetch', (event) => {
   }
 });
 
-/*
- * Deletes all caches that start with the `CACHE_KEY_PREFIX`, except for the
- * cache defined by `CACHE_NAME`
- */
-const DELETE_STALE_CACHES = () => {
-  return caches.keys().then((cacheNames) => {
-    cacheNames.forEach((cacheName) => {
-      let isOwnCache = cacheName.indexOf(CACHE_KEY_PREFIX) === 0;
-      let isNotCurrentCache = cacheName !== CACHE_NAME;
-
-      if (isOwnCache && isNotCurrentCache) {
-        caches.delete(cacheName);
-      }
-    });
-  });
-};
-
 self.addEventListener('activate', (event) => {
-  event.waitUntil(DELETE_STALE_CACHES());
+  event.waitUntil(cleanupCaches(CACHE_KEY_PREFIX, CACHE_NAME));
 });
