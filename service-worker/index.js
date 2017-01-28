@@ -1,4 +1,5 @@
 import { PATTERNS, VERSION } from 'ember-service-worker-cache-first/service-worker/config';
+import cleanupCaches from 'ember-service-worker/service-worker/cleanup-caches';
 
 const CACHE_KEY_PREFIX = 'esw-cache-first';
 const CACHE_NAME = `${CACHE_KEY_PREFIX}-${VERSION}`;
