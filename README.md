@@ -1,5 +1,7 @@
 # Ember Service Worker Cache First
 
+**[ember-service-worker-cache-first is built and maintained by DockYard, contact us for expert Ember.js consulting](https://dockyard.com/ember-consulting)**.
+
 _A cache first Ember Service Worker plugin_
 
 ## F#$& my assets aren't updating in development mode
