@@ -14,3 +14,7 @@
 bower.json
 ember-cli-build.js
 testem.js
+
+# lockfiles
+package-lock.json
+yarn.lock
