@@ -3,6 +3,8 @@
 **[ember-service-worker-cache-first is built and maintained by DockYard, contact us for expert Ember.js consulting](https://dockyard.com/ember-consulting)**.
 
 _A cache first Ember Service Worker plugin_
+This plugin fulfills a strategy of serving cached content first, and then loading a fresh version to store in the cache for the next request.
+This strategy is sometimes also referred to as [stale while revalidate](https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#stale-while-revalidate)
 
 ## F#$& my assets aren't updating in development mode
 
